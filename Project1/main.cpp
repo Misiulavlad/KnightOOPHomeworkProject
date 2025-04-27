@@ -73,7 +73,7 @@ int main() {
 	cout << "Input alive or not (1-yes, 0-no): ";
 	cin >> alive;
 
-	
+
 
 	Knight knight(name, age, height, weapons, alive);
 
@@ -81,7 +81,17 @@ int main() {
 
 	knight.modifyKnight(knight);
 
-	cout << "After: " << knight.toString() << endl;
+	cout << "After: " << knight.toString() << endl << endl;
+
+	Knight kn;
+	cout << "Default constructor..." << endl << kn.toString() << endl << endl;
+
+	Knight kn1(name);
+	cout << kn1.toString() << endl << endl;
+
+
+	Knight kn2(name, age);
+	cout << kn2.toString() << endl << endl;
 	//delete[] knight;
 	return 0;
 }

@@ -7,6 +7,28 @@ public:
 	string weapons;
 	bool alive;
 
+	Knight() :Knight("nn",20,1.7,"nth",true){	
+	}
+
+	Knight(string nm) {
+		cout << "Constructor with one argument..." << endl;
+		 name = nm;
+		 age = 0;
+		 height = 0.0;
+		 weapons = "nth";
+		 alive = true;
+	}
+
+	Knight(string nm, int ag) {
+		cout << "Constructor with two arguments..." << endl;
+		name = nm;
+		age=ag;
+		height = 0.0;
+		weapons = "nth";
+		alive = false;
+	}
+
+	
 	//constructor with arguments
 	Knight(string nm, int ag, double ht, string weap, bool al)
 		: name(nm), age(ag), height(ht), weapons(weap), alive(al) {
