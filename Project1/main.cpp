@@ -1,6 +1,6 @@
-#include"Knigths.h"
+#include "Knigths.h"
 int main() {
-	int count;
+	/*int count;
 	cout << "Input count of knigths: ";
 	cin >> count;
 
@@ -53,6 +53,35 @@ int main() {
 		}
 		break;
 	}
-	delete[] knight;
+
+	cout << endl;*/
+	string name;
+	int age;
+	double height;
+	string weapons;
+	bool alive;
+
+
+	cout << "Input name of knight: ";
+	cin >> name;
+	cout << "Input age of knight: ";
+	cin >> age;
+	cout << "Input height of knight (in meters): ";
+	cin >> height;
+	cout << "Input weapon (for example: knife, sword): ";
+	cin >> weapons;
+	cout << "Input alive or not (1-yes, 0-no): ";
+	cin >> alive;
+
+	
+
+	Knight knight(name, age, height, weapons, alive);
+
+	cout << "Before modification: " << knight.toString() << endl;
+
+	knight.modifyKnight(knight);
+
+	cout << "After: " << knight.toString() << endl;
+	//delete[] knight;
 	return 0;
 }
