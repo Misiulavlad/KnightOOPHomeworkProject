@@ -26,5 +26,8 @@
     <ClInclude Include="Knigths.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Initializer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

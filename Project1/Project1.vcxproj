@@ -130,6 +130,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Initializer.h" />
     <ClInclude Include="Knigths.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>

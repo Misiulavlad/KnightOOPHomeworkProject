@@ -48,9 +48,12 @@ public:
 	}
 
 	string toString() {
+		ostringstream stream;
+		stream << fixed << setprecision(2) << height;
+
 		string s = "Name: " + name;
 		s += ", age: " + to_string(age);
-		s += ", height: " + to_string(height);
+		s += ", height: " + stream.str();  
 		s += ", weapons: " + weapons;
 		s += ", alive: ";
 		s += (alive ? "Yes" : "No");
