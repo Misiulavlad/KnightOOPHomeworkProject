@@ -127,11 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Initializer.cpp" />
+    <ClCompile Include="Knight.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Initializer.h" />
-    <ClInclude Include="Knigths.h" />
+    <ClInclude Include="Knights.h" />
+    <ClInclude Include="manager.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
