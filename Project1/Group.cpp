@@ -27,7 +27,7 @@ Knight Group::getKnight(int index) {
 		return list[index];
 	}
 	else {
-		return;
+		return Knight("nn",0,0,"nth",false);
 	}
 }
 
