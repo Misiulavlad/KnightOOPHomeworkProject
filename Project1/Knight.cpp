@@ -15,7 +15,7 @@ void Knight::setWeapons(string wp) { weapons = wp; }
 
 
 
-string Knight::toString() const {
+string Knight::toString()  {
     ostringstream stream;
     stream << fixed << setprecision(2) << height;
     return "Name: " + name + ", age: " + to_string(age) +

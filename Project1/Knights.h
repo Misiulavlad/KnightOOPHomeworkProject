@@ -32,6 +32,6 @@ public:
 	bool getAlive() const { return alive; }
 	void setAlive(bool al) { alive = al; }
 
-	string toString() const;
+	string toString();
 
 };
