@@ -7,6 +7,7 @@ Queue::Queue() {
 
 Queue::~Queue() {
 	if (queue != nullptr) {
+
 		delete[] queue;
 	}
 }
@@ -61,18 +62,17 @@ int Queue::getSize() {
 	return size;
 }
 bool Queue::isEmpty() {
-	return size = 0;
+	return size == 0;
 }
 
 string Queue::toString() {
-	string s = "Queue is empty!";
+	string s = "Queue is empty.";
 
 	if (!isEmpty()) {
+		s = "";
 		for (int i = 0; i < size; i++) {
 			s += to_string(queue[i]) + " ";
 		}
 	}
 	return s;
-
 }
-
