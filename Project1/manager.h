@@ -1,5 +1,9 @@
-#include "Initializer.h"
+#pragma once
+
+class Knight;
+#include "ArrayList.h"
+
 class Manager {
 public:
-    Knight getOldestKnight(Knight* list, int count);
+    Knight getOldestKnight(const ArrayList& knightsList);
 };

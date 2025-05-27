@@ -1,88 +1,86 @@
 #include "ArrayList.h"
+#include "Knights.h"
+#include <sstream>
+
 ArrayList::ArrayList() {
-	size = 0;
-	array = nullptr;
+    size = 0;
+    capacity = 2;
+    array = new Knight * [capacity];
 }
 
 ArrayList::~ArrayList() {
-	if (array != nullptr) {
-		delete[] array;
-	}
+    clear();
 }
 
-void ArrayList::add(int kn) {
-	if (array != nullptr) {
-		int* newArray = new int[size + 1];
+void ArrayList::resize() {
+    capacity *= 2;
+    Knight** newArray = new Knight * [capacity];
 
-		for (int i = 0; i < size; i++) {
-			newArray[i] = array[i];
-		}
+    for (int i = 0; i < size; i++) {
+        newArray[i] = array[i];
+    }
 
-		delete[] array;
+    delete[] array;
+    array = newArray;
+}
 
-		array = newArray;
-		size++;
-	}
-	else {
-		array = new int[1];
-		array[0] = kn;
-		size = 1;
-	}
+void ArrayList::add(const Knight& knight) {
+    if (size == capacity) {
+        resize();
+    }
+
+    array[size] = new Knight(knight);
+    size++;
 }
 
 void ArrayList::remove(int index) {
+    if (index < 0 || index >= size) return;
 
-	if (index < 0 || index >= size) return;
+    delete array[index];
 
-	int* newArray = new int[size - 1];
+    for (int i = index; i < size - 1; i++) {
+        array[i] = array[i + 1];
+    }
 
-	for (int i = 0, j = 0; i < size; i++) {
-		if (i != index) {
-			newArray[j++] = array[i];
-		}
-	}
-
-	delete[] array;
-	array = newArray;
-	size--;
-
-}
-int ArrayList::getSize() {
-	return size;
-}
-int ArrayList::get(int size, int index) {
-	if (index < 0 || index >= size) {
-
-	}
-	return array[index];
+    size--;
 }
 
-void ArrayList::set(int kn, int index) {
-	if (index < 0 || index >= size) {
+int ArrayList::getSize() const {
+    return size;
+}
 
-	}
-	array[index] = kn;
+Knight* ArrayList::get(int index) const {
+    return (index >= 0 && index < size) ? array[index] : nullptr;
+}
+
+void ArrayList::set(const Knight& knight, int index) {
+    if (index >= 0 && index < size) {
+        *array[index] = knight;
+    }
 }
 
 void ArrayList::clear() {
-	delete[] array;
-	array = nullptr;
-	size = 0;
-}
-bool ArrayList::isEmpty() {
-	return size ==0;
+    for (int i = 0; i < size; i++) {
+        delete array[i];
+    }
+    delete[] array;
+    array = nullptr;
+    size = 0;
+    capacity = 2;
 }
 
-string ArrayList::toString() {
-	if (size == 0) return "[]";
+bool ArrayList::isEmpty() const {
+    return size == 0;
+}
 
-	string result = "[";
-	for (int i = 0; i < size; i++) {
-		result += to_string(array[i]);
-		if (i < size - 1) {
-			result += ", ";
-		}
-	}
-	result += "]";
-	return result;
+string ArrayList::toString() const {
+    if (size == 0) return "[]";
+
+    ostringstream result;
+    result << "[\n";
+    for (int i = 0; i < size; i++) {
+        result << array[i]->toString() << "\n";
+    }
+    result << "]";
+    return result.str();
 }

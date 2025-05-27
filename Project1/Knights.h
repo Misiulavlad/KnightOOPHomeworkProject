@@ -1,37 +1,43 @@
+#pragma once
 #include "util.h"
+#include "ArrayList.h"
+#include <string>
+
+using namespace std;
+
 class Knight {
-
-	
+private:
+    string name;
+    int age;
+    double height;
+    string weapons;
+    bool alive;
 public:
-	string name;
-	int age;
-	double height;
-	string weapons;
-	bool alive;
+    Knight();
+    Knight(string nm, int age, double height, string weapons, bool alive);
+    Knight(const Knight& knight);
+    ~Knight();
 
-	Knight() :Knight("nn", 20, 1.7, "nth", true) {}
-	Knight(string nm) :Knight(nm, 10, 1.7, "nth", true) {}
-	Knight(string nm, int age) : Knight(nm, age, 1.7, "nth", true) {}
-	Knight(string nm, int age, double height, string weapons, bool alive)
-		: name(nm), age(age), height(height), weapons(weapons), alive(alive) {
-	}
+    string getName() const;
+    void setName(string name);
+    int getAge() const;
+    void setAge(int age);
+    double getHeight() const;
+    void setHeight(double height);
+    string getWeapons() const;
+    void setWeapons(string weapons);
+    bool getAlive() const;
+    void setAlive(bool al);
 
-	Knight(const Knight& knight) : Knight(knight.name, knight.age, knight.height, knight.weapons, knight.alive) {}
+    string toString() const;
+};
 
-
-
-	~Knight();
-	string getName();
-	void setName(string name);
-	int getAge();
-	void setAge(int age);
-	double getHeight();
-	void setHeight(double height);
-	string getWeapons();
-	void setWeapons(string weapons);
-	bool getAlive() const { return alive; }
-	void setAlive(bool al) { alive = al; }
-
-	string toString();
-
+class KnightManager {
+private:
+    ArrayList knightsList;
+public:
+    void addKnight(const Knight& knight);
+    void removeKnight(int index);
+    string listKnights() const;
+    Knight getOldestKnight() const;
 };

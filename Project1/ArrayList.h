@@ -1,22 +1,26 @@
-#include "Knights.h"
-class ArrayList:public Knight{	
+#pragma once
+#include <string>
+
+using namespace std;
+
+class Knight; 
+
+class ArrayList {
+private:
+    int size;
+    int capacity;
+    Knight** array;
+    void resize();
 public:
-	int size;
-	int* array;
+    ArrayList();
+    ~ArrayList();
 
-	ArrayList();
-	~ArrayList();
-
-	void add(int kn);
-	void remove(int index);
-	int getSize();
-	int get(int size, int index);
-
-	void set(int kn, int index);
-
-	void clear();
-	bool isEmpty();
-
-	string toString();
+    void add(const Knight& knight);
+    void remove(int index);
+    int getSize() const;
+    Knight* get(int index) const;
+    void set(const Knight& knight, int index);
+    void clear();
+    bool isEmpty() const;
+    string toString() const;
 };
-
