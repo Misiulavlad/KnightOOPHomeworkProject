@@ -22,5 +22,8 @@ int main() {
 
     delete[] list;
 
+    cout << "ArrayList:" << endl << endl;
+
+
     return 0;
 }

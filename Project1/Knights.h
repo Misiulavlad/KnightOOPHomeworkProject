@@ -1,13 +1,13 @@
 #include "util.h"
 class Knight {
-private:
+
+	
+public:
 	string name;
 	int age;
 	double height;
 	string weapons;
 	bool alive;
-public:
-
 
 	Knight() :Knight("nn", 20, 1.7, "nth", true) {}
 	Knight(string nm) :Knight(nm, 10, 1.7, "nth", true) {}
