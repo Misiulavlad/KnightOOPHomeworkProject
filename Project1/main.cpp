@@ -1,6 +1,7 @@
 #include "manager.h"
 #include "ArrayList.h"
 #include "Knights.h"  
+#include "Weapons.h"  
 #include <iostream>
 
 using namespace std;
@@ -39,6 +40,11 @@ int main() {
     Manager manager;
     Knight oldest = manager.getOldestKnight(knightsList);
     cout << "\nOldest knight:\n" << oldest.toString() << endl;
+
+    cout << endl << endl;
+
+    Weapons weapons;
+    cout << endl;
 
     return 0;
 }
