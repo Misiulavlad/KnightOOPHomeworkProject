@@ -1,24 +1,15 @@
 #pragma once
-#include "Knights.h"
-class Weapons : public Knight
-{
+#include <string>
+using namespace std;
+
+class Weapon {
+private:
+    string name;
+    int rarity;
+    double weight;
+
 public:
-	double weight;
-	int rarity;
-
-
-
-	Weapons();
-	Weapons(string name,int age,double height,bool alive,string weapons,int rarity,double weight);
-	Weapons(const Weapons& weapons);
-	~Weapons();
-
-	double getWeight();
-	void setWeight(double weight);
-	
-	int getRarity();
-	void setRarity(int rarity);
-
-	string toString();
+    Weapon(string name = "None", int rarity = 0, double weight = 0.0);
+    string toString() const;
+    int weaponScore() const;
 };
-

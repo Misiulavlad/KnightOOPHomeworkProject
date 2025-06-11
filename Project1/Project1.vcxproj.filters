@@ -59,5 +59,8 @@
     <ClInclude Include="Weapons.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ICombatant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

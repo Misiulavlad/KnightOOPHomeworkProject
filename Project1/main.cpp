@@ -1,50 +1,23 @@
-#include "manager.h"
-#include "ArrayList.h"
-#include "Knights.h"  
-#include "Weapons.h"  
+#include "Knights.h"
+#include "Initializer.h"
 #include <iostream>
-
 using namespace std;
 
 int main() {
-    int count;
-    cout << "Input count of knights: ";
-    cin >> count;
+    Initializer army;
 
-    ArrayList knightsList;
+    army.add(new Knight("Gawain", 38, 1.85, true, Weapon("Mace", 3, 6.2)));
+    army.add(new Knight("Percival", 29, 1.77, true, Weapon("Sword", 4, 4.5)));
+    army.add(new Knight("Galahad", 33, 1.80, true, Weapon("Lance", 5, 5.5)));
 
-    for (int i = 0; i < count; i++) {
-        string name;
-        int age;
-        double height;
-        string weapons;
-        bool alive;
-
-        cout << "Enter details for knight " << i + 1 << ":\n";
-        cout << "Name: ";
-        cin >> name;
-        cout << "Age: ";
-        cin >> age;
-        cout << "Height: ";
-        cin >> height;
-        cout << "Weapons: ";
-        cin >> weapons;
-        cout << "Alive (1 for yes, 0 for no): ";
-        cin >> alive;
-
-        knightsList.add(Knight(name, age, height, weapons, alive));
+    cout << "=== Army Roster ===\n";
+    for (int i = 0; i < army.getSize(); i++) {
+        cout << army.get(i)->toString() << "\n";
     }
 
-    cout << "\nList of knights:\n" << knightsList.toString() << endl;
-
-    Manager manager;
-    Knight oldest = manager.getOldestKnight(knightsList);
-    cout << "\nOldest knight:\n" << oldest.toString() << endl;
-
-    cout << endl << endl;
-
-    Weapons weapons;
-    cout << endl;
+    cout << "\n>> Strongest Knight:\n";
+    ICombatant* best = army.getStrongest();
+    cout << best->toString() << " | Power: " << best->powerLevel() << "\n";
 
     return 0;
 }

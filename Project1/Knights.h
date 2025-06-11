@@ -1,43 +1,19 @@
 #pragma once
-#include "util.h"
-#include "ArrayList.h"
-#include <string>
+#include "ICombatant.h"
+#include "Weapons.h"
 
-using namespace std;
-
-class Knight {
-private:
+class Knight : public ICombatant {
+protected:
     string name;
     int age;
     double height;
-    string weapons;
     bool alive;
+    Weapon weapon;
+
 public:
-    Knight();
-    Knight(string nm, int age, double height, string weapons, bool alive);
-    Knight(const Knight& knight);
-    ~Knight();
-
-    string getName() const;
-    void setName(string name);
-    int getAge() const;
-    void setAge(int age);
-    double getHeight() const;
-    void setHeight(double height);
-    string getWeapons() const;
-    void setWeapons(string weapons);
-    bool getAlive() const;
-    void setAlive(bool al);
-
-    string toString() const;
-};
-
-class KnightManager {
-private:
-    ArrayList knightsList;
-public:
-    void addKnight(const Knight& knight);
-    void removeKnight(int index);
-    string listKnights() const;
-    Knight getOldestKnight() const;
+    Knight(string name = "Nameless", int age = 30, double height = 1.75, bool alive = true, Weapon w = Weapon());
+    string getName() const override;
+    bool isAlive() const override;
+    int powerLevel() const override;
+    string toString() const override;
 };

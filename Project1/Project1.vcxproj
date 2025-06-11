@@ -138,6 +138,7 @@
   <ItemGroup>
     <ClInclude Include="ArrayList.h" />
     <ClInclude Include="Group.h" />
+    <ClInclude Include="ICombatant.h" />
     <ClInclude Include="Initializer.h" />
     <ClInclude Include="Knights.h" />
     <ClInclude Include="manager.h" />

@@ -1,26 +1,44 @@
 #include "Initializer.h"
-void Initializer::init(Knight*& list, int count) {
-	if (list == nullptr && count > 0) {
-		list = new Knight[count];
-	}
-	string names[]{ "Matthew","Vlad","Artem",
-		"Viktor","Ivan","Alex" };
 
-	string weapons[]{ "Knife","Sword","dagger","mace",
-	"spear","saber","machete","axe","pitchfork" };
+Initializer::Initializer() : size(0), capacity(2) {
+    members = new ICombatant * [capacity];
+}
 
-	int minAge = 20;
-	int maxAge = 80;
+Initializer::~Initializer() {
+    for (int i = 0; i < size; i++) {
+        delete members[i];
+    }
+    delete[] members;
+}
 
-	double minHeight = 1.70;
-	double maxHeight = 2.00;
+void Initializer::resize() {
+    capacity *= 2;
+    ICombatant** newMembers = new ICombatant * [capacity];
+    for (int i = 0; i < size; i++) {
+        newMembers[i] = members[i];
+    }
+    delete[] members;
+    members = newMembers;
+}
 
-	for (int i = 0; i < count; i++) {
-		list[i].setName(names[rand() % 6]);
-		list[i].setAge(rand() % (maxAge - minAge + 1) + minAge);
-		list[i].setWeapons(weapons[rand() % 9]);
-		double rawHeight = minHeight + static_cast<double>(rand()) / RAND_MAX * (maxHeight - minHeight);
-		list[i].setHeight(floor(rawHeight * 100) / 100);
+void Initializer::add(ICombatant* c) {
+    if (size == capacity) resize();
+    members[size++] = c;
+}
 
-	}
-};
+ICombatant* Initializer::get(int index) const {
+    return (index >= 0 && index < size) ? members[index] : nullptr;
+}
+
+int Initializer::getSize() const { return size; }
+
+ICombatant* Initializer::getStrongest() const {
+    if (size == 0) return nullptr;
+    ICombatant* strongest = members[0];
+    for (int i = 1; i < size; i++) {
+        if (*strongest < *members[i]) {
+            strongest = members[i];
+        }
+    }
+    return strongest;
+}

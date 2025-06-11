@@ -1,39 +1,13 @@
 #include "Weapons.h"
-Weapons::Weapons() :Weapons("nn", 0, 0.0, false, "nth", 0, 0.0) {
-	cout << "Weapons default constructor."<<endl;
+
+Weapon::Weapon(string name, int rarity, double weight)
+    : name(name), rarity(rarity), weight(weight) {
 }
 
-Weapons::Weapons(string name, int age, double height, bool alive, string weapons, int rarity, double weight) {
-	this->rarity = rarity;
-	this->weight = weight;
+string Weapon::toString() const {
+    return name + " (R" + to_string(rarity) + ", " + to_string((int)(weight * 100) / 100.0) + "kg)";
 }
 
-Weapons::Weapons(const Weapons& weapons):Knight(weapons) {
-	this->rarity = rarity;
-	this->weight = weight;
-}
-
-Weapons::~Weapons() {
-	cout << "Weapons default destructor."<<endl;
-}
-
-double Weapons::getWeight() {
-	return weight;
-}
-void Weapons::setWeight(double weight) {
-	this->weight = weight;
-}
-
-int Weapons::getRarity() {
-	return rarity;
-}
-void Weapons::setRarity(int rarity) {
-	this->rarity = rarity;
-}
-
-string Weapons::toString() {
-	string s = "";
-	s += to_string(weight)
-		+ ", " + to_string(rarity);
-	return Knight::toString() + s;
+int Weapon::weaponScore() const {
+    return rarity * 5 - (int)weight;
 }
